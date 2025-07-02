@@ -1,0 +1,86 @@
+//     ALGORITHM FindMaximum
+//     INPUT: An array A with n elements
+//     OUTPUT: The largest element in A
+
+//     SET max ← A[0]
+//     FOR i ← 1 TO n - 1 DO
+//         IF A[i] > max THEN
+//             SET max ← A[i]
+//         ENDIF
+//     ENDFOR
+//     RETURN max
+// END
+
+
+ALGORITHM AreElementsDistinct
+    INPUT: Array A of n elements
+    OUTPUT: true if all elements are distinct, false otherwise
+
+    FOR i ← 0 TO n - 2 DO
+        FOR j ← i + 1 TO n - 1 DO
+            IF A[i] = A[j] THEN
+                RETURN false
+            ENDIF
+        ENDFOR
+    ENDFOR
+    RETURN true
+END
+
+
+ALGORITHM MultiplyMatrices
+INPUT: Two n x n matrices A and B
+OUTPUT: Matrix C = A × B
+
+1. Create an empty matrix C of size n x n
+2. FOR i ← 0 TO n-1 DO
+3.     FOR j ← 0 TO n-1 DO
+4.         SET C[i][j] ← 0
+5.         FOR k ← 0 TO n-1 DO
+6.             C[i][j] ← C[i][j] + (A[i][k] × B[k][j])
+7.         END FOR
+8.     END FOR
+9. END FOR
+10. RETURN C
+
+
+ALGORITHM CountBinaryDigits
+INPUT: A positive integer n
+OUTPUT: Number of binary digits in n
+
+1. SET count ← 0
+2. WHILE n > 0 DO
+3.     n ← n DIV 2
+4.     count ← count + 1
+5. END WHILE
+6. RETURN count
+
+
+ALGORITHM GaussianElimination
+INPUT: Augmented matrix A[n][n+1]
+OUTPUT: Solution vector x[n]
+
+1. FOR k ← 0 TO n - 1 DO
+2.     Find row index maxRow with the largest absolute A[i][k] for i ≥ k
+3.     Swap A[k] and A[maxRow]
+4.     FOR i ← k + 1 TO n - 1 DO
+5.         factor ← A[i][k] / A[k][k]
+6.         FOR j ← k TO n DO
+7.             A[i][j] ← A[i][j] - factor × A[k][j]
+8.         END FOR
+9.     END FOR
+10. END FOR
+
+11. FOR i ← n - 1 DOWNTO 0 DO
+12.     x[i] ← A[i][n]
+13.     FOR j ← i + 1 TO n - 1 DO
+14.         x[i] ← x[i] - A[i][j] × x[j]
+15.     END FOR
+16.     x[i] ← x[i] / A[i][i]
+17. END FOR
+
+18. RETURN x
+
+
+
+javac mypackage/*.java
+java mypackage.Main
